@@ -3,6 +3,7 @@ package hackerrank.algorithm.easy;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 import java.util.stream.Stream;
 
@@ -38,17 +39,11 @@ public class PickingNumbers {
             }
         }
         int maxCnt = 0;
-        int oldNum = 0;
-        for (Integer i : numberMap.keySet()) {
-            if (oldNum != 0 && (i - oldNum) == 1) {
-                if (numberMap.get(oldNum) + numberMap.get(i) > maxCnt) {
-                    maxCnt = numberMap.get(oldNum) + numberMap.get(i);
-                }
+        for (int i : numberMap.keySet()) {
+            int c = numberMap.get(i) + Optional.ofNullable(numberMap.get(i - 1)).orElse(0);
+            if (maxCnt < c) {
+                maxCnt = c;
             }
-            if (maxCnt < numberMap.get(i)) {
-                maxCnt = numberMap.get(i);
-            }
-            oldNum = i;
         }
         return maxCnt;
     }
