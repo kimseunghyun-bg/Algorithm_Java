@@ -22,9 +22,9 @@ public class FormingAMagicSquare {
                 {8, 3, 4, 1, 5, 9, 6, 7, 2}
         };
         List<Integer> linerS = new ArrayList<>();
-        for (int i = 0; i < s.length; i++) {
-            for (int j = 0; j < s[i].length; j++) {
-                linerS.add(s[i][j]);
+        for (int[] ints : s) {
+            for (int anInt : ints) {
+                linerS.add(anInt);
             }
         }
 
