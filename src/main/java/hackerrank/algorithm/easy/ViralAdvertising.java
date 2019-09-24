@@ -11,16 +11,18 @@ public class ViralAdvertising {
     static int viralAdvertising(int n) {
         int sumLikedPeople = 0;
         for (int i = 1; i <= n; i++) {
-            sumLikedPeople += getLikedPeopleAtDay(i);
+            sumLikedPeople += getNumberOfAdRecipientsOnDays(i);
         }
         return sumLikedPeople;
     }
 
-    static int getLikedPeopleAtDay(int day) {
-        if (day == 1) {
+    static int getNumberOfAdRecipientsOnDays(int day) {
+        final int FIRST_DAY = 1;
+        final int SHARED_FRIENDS_PER_RECIPIENT = 3;
+        if (day == FIRST_DAY) {
             return 2;
         } else {
-            return (int) Math.floor(getLikedPeopleAtDay(day - 1)*3 / 2);
+            return (int) Math.floor(getNumberOfAdRecipientsOnDays(day - 1) * SHARED_FRIENDS_PER_RECIPIENT / 2);
         }
     }
 
