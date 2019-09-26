@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class JumpingOnTheCloudsTest {
+class JumpingOnTheCloudsRevisitedTest {
 
     static Stream<Arguments> testJumpingOnClouds(){
         return Stream.of(
@@ -23,7 +23,7 @@ class JumpingOnTheCloudsTest {
     void testJumpingOnClouds(int[] c, int k, int expected) {
         // given
         // when
-        int actual = JumpingOnTheClouds.jumpingOnClouds(c, k);
+        int actual = JumpingOnTheCloudsRevisited.jumpingOnClouds(c, k);
         // then
         assertThat(actual, is(expected));
     }
