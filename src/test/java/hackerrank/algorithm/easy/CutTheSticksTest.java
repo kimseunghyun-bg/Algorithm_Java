@@ -13,7 +13,8 @@ class CutTheSticksTest {
 
     static Stream<Arguments> testCutTheSticks() {
         return Stream.of(
-                Arguments.of(new int[]{5, 4, 4, 2, 2, 8}, new int[]{6, 4, 2, 1})
+                Arguments.of(new int[]{5, 4, 4, 2, 2, 8}, new int[]{6, 4, 2, 1}),
+                Arguments.of(new int[]{1, 2, 3, 4, 3, 3, 2, 1}, new int[]{8, 6, 4, 1})
         );
     }
 
