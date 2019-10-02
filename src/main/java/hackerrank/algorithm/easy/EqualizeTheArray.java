@@ -5,29 +5,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 
 public class EqualizeTheArray {
-
     // Complete the equalizeArray function below.
     static int equalizeArray(int[] arr) {
         Map<Integer, Integer> countMap = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            if (countMap.get(arr[i]) != null) {
-                countMap.put(arr[i], countMap.get(arr[i]) + 1);
-            } else {
-                countMap.put(arr[i], 1);
-            }
+        for (int item : arr) {
+            int value = Optional.ofNullable(countMap.get(item)).orElse(0);
+            countMap.put(item, value + 1);
         }
 
-        int max = 0;
-        for (int i : countMap.keySet()) {
-            if (max < countMap.get(i)) {
-                max = countMap.get(i);
-            }
-        }
-        return arr.length-max;
+        int max = countMap.values().stream().max(Integer::compareTo).orElse(0);
+        return arr.length - max;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
