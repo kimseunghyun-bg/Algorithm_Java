@@ -5,14 +5,24 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class AngryProfessor {
 
     // Complete the angryProfessor function below.
     static String angryProfessor(int k, int[] a) {
-
-        int attendees = (int) Arrays.stream(a).filter(t -> t < 1).count();
-        return attendees >= k ? "NO" : "YES";
+        AtomicInteger attendees = new AtomicInteger();
+        try {
+            Arrays.stream(a).filter(x -> {
+                if (attendees.get() >= k) {
+                    throw new RuntimeException();
+                }
+                return x < 1;
+            }).forEach(t -> attendees.incrementAndGet());
+        } catch (RuntimeException e) {
+            System.out.println(attendees);
+        }
+        return attendees.get() >= k ? "NO" : "YES";
     }
 
     private static final Scanner scanner = new Scanner(System.in);
