@@ -1,6 +1,7 @@
 package hackerrank.algorithm.easy;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class AppleAndOrange {
 
@@ -11,19 +12,11 @@ public class AppleAndOrange {
     }
 
     static int[] calculateFruitsDistance(int treeLocation, int[] fruits) {
-        for (int i = 0; i < fruits.length; i++) {
-            fruits[i] += treeLocation;
-        }
-        return fruits;
+        return Arrays.stream(fruits).map(fruit -> fruit+treeLocation).toArray();
     }
 
     static int countFruitsOnHouse(int houseStartPos, int houseEndPos, int[] fruitsPos) {
-        int count = 0;
-        for (int i : fruitsPos) {
-            if(houseStartPos <= i && i <=houseEndPos)
-                count++;
-        }
-        return count;
+        return (int) Arrays.stream(fruitsPos).filter(fruitPos -> houseStartPos <= fruitPos && fruitPos <= houseEndPos).count();
     }
 
     private static final Scanner scanner = new Scanner(System.in);

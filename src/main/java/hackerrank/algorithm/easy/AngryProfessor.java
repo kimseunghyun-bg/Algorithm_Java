@@ -13,14 +13,12 @@ public class AngryProfessor {
     static String angryProfessor(int k, int[] a) {
         AtomicInteger attendees = new AtomicInteger();
         try {
-            Arrays.stream(a).filter(x -> {
-                if (attendees.get() >= k) {
+            Arrays.stream(a).filter(x -> x < 1).forEach(t -> {
+                if (attendees.incrementAndGet() >= k) {
                     throw new RuntimeException();
                 }
-                return x < 1;
-            }).forEach(t -> attendees.incrementAndGet());
+            });
         } catch (RuntimeException e) {
-            System.out.println(attendees);
         }
         return attendees.get() >= k ? "NO" : "YES";
     }
