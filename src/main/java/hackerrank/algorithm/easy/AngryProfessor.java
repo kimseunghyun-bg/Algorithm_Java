@@ -3,23 +3,16 @@ package hackerrank.algorithm.easy;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AngryProfessor {
 
     // Complete the angryProfessor function below.
     static String angryProfessor(int k, int[] a) {
-        int attendees = 0;
-        for (int i : a) {
-            if (attendees == k) {
-                return "NO";
-            }
-            if (i < 1) {
-                attendees += 1;
-            }
-        }
 
-        return "YES";
+        int attendees = (int) Arrays.stream(a).filter(t -> t < 1).count();
+        return attendees >= k ? "NO" : "YES";
     }
 
     private static final Scanner scanner = new Scanner(System.in);
