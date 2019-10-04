@@ -11,13 +11,7 @@ public class CutTheSticks {
     static int[] cutTheSticks(int[] arr) {
         List<Integer> sticksCuts = new ArrayList<>();
         Map<Integer, Integer> inputMap = new TreeMap<>(Comparator.naturalOrder());
-        for (int i : arr) {
-            if (inputMap.get(i) == null){
-                inputMap.put(i,1);
-            }else {
-                inputMap.put(i,inputMap.get(i)+1);
-            }
-        }
+        Arrays.stream(arr).forEach(i -> inputMap.put(i, 1+Optional.ofNullable(inputMap.get(i)).orElse(0)));
 
         int len = arr.length;
         for (Integer i : inputMap.keySet()) {
