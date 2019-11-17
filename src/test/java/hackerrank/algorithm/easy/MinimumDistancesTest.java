@@ -45,4 +45,20 @@ class MinimumDistancesTest {
         // then
         assertThat(actual, is(expected));
     }
+
+    static Stream<Arguments> getMinimumDistanceInList() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(0, 2, 5, 6, 9), 1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    void getMinimumDistanceInList(List<Integer> list, int expected){
+        // given
+        // when
+        int actual = MinimumDistances.getMinimumDistancesInList(list);
+        // then
+        assertThat(actual, is(expected));
+    }
 }
