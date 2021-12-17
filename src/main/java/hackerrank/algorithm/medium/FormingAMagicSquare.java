@@ -11,7 +11,7 @@ public class FormingAMagicSquare {
 
     // Complete the formingMagicSquare function below.
     static int formingMagicSquare(int[][] s) {
-        int[][] magicSqures = new int[][]{
+        int[][] magicSquares = new int[][]{
                 {2, 7, 6, 9, 5, 1, 4, 3, 8},
                 {2, 9, 4, 7, 5, 3, 6, 1, 8},
                 {4, 3, 8, 9, 5, 1, 2, 7, 6},
@@ -28,13 +28,13 @@ public class FormingAMagicSquare {
             }
         }
 
-        Integer minDiff = null;
-        for (int[] magicSqure : magicSqures){
+        int minDiff = -1;
+        for (int[] magicSquare : magicSquares) {
             int diff = 0;
-            for (int i = 0; i < magicSqure.length; i++) {
-                diff += Math.abs(magicSqure[i] - linerS.get(i));
+            for (int i = 0; i < magicSquare.length; i++) {
+                diff += Math.abs(magicSquare[i] - linerS.get(i));
             }
-            if (minDiff != null || minDiff > diff) {
+            if (minDiff == -1 || minDiff > diff) {
                 minDiff = diff;
             }
         }
