@@ -1,4 +1,4 @@
-package hackerrank.algorithm.warmup;
+package hackerrank.algorithm.easy;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,22 +8,21 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SimpleArraySumTest {
+class TimeConversionTest {
 
-    private static Stream<Arguments> testSimpleArraySum() {
+    private static Stream<Arguments> testTimeConversion() {
         return Stream.of(
-                Arguments.of(new int[]{1, 2, 3, 4, 10, 11}, 31)
+                Arguments.of("07:05:45PM", "19:05:45")
         );
     }
 
     @ParameterizedTest
     @MethodSource
-    void testSimpleArraySum(int[] param1, int expected) {
+    void testTimeConversion(String time, String expectedTime) {
         // given
         // when
-        int actual = SimpleArraySum.simpleArraySum(param1);
-
+        String actualTime = TimeConversion.timeConversion(time);
         // then
-        assertEquals(expected, actual);
+        assertEquals(expectedTime, actualTime);
     }
 }

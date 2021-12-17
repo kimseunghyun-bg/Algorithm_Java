@@ -1,18 +1,25 @@
-package hackerrank.algorithm.warmup;
+package hackerrank.algorithm.easy;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AVeryBigSum {
-    // Complete the aVeryBigSum function below.
-    static long aVeryBigSum(long[] ar) {
-        long result = 0;
-        for (long l : ar) {
-            result += l;
+public class BirthdayCakeCandles {
+
+    // Complete the birthdayCakeCandles function below.
+    static int birthdayCakeCandles(int[] ar) {
+        int tallestHeight = 0;
+        int count = 0;
+        for (int i : ar) {
+            if (tallestHeight < i) {
+                tallestHeight = i;
+                count = 1;
+            } else if (tallestHeight == i) {
+                count++;
+            }
         }
-        return result;
+        return count;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -23,17 +30,17 @@ public class AVeryBigSum {
         int arCount = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        long[] ar = new long[arCount];
+        int[] ar = new int[arCount];
 
         String[] arItems = scanner.nextLine().split(" ");
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < arCount; i++) {
-            long arItem = Long.parseLong(arItems[i]);
+            int arItem = Integer.parseInt(arItems[i]);
             ar[i] = arItem;
         }
 
-        long result = aVeryBigSum(ar);
+        int result = birthdayCakeCandles(ar);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
@@ -43,3 +50,4 @@ public class AVeryBigSum {
         scanner.close();
     }
 }
+
